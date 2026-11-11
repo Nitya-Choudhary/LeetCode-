@@ -1,0 +1,17 @@
+
+class Solution {
+public:
+    long long minimumCost(int cost1, int cost2, int costBoth, int need1, int need2) {
+        long long both = min(need1, need2);
+
+        long long ans = both * min((long long)costBoth, (long long)cost1 + cost2);
+
+        if (need1 > need2) {
+            ans += (long long)(need1 - need2) * min((long long)cost1, (long long)costBoth);
+        } else {
+            ans += (long long)(need2 - need1) * min((long long)cost2, (long long)costBoth);
+        }
+
+        return ans;
+    }
+};
